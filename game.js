@@ -10,7 +10,7 @@ class Gameboard {
 
         for (let x = 0; x < this.width; x++) {
             for (let y = 0; y < this.height; y++) {
-                var newCell = new GameCell(this.cellWidth, this.cellHeight, x, y);
+                let newCell = new GameCell(this.cellWidth, this.cellHeight, x, y);
                 this.appendCell(newCell);
             }
         }
