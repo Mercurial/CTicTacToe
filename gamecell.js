@@ -46,7 +46,7 @@ class GameCell {
             this.onActivate(this);
         }
     }
-
+    
     setValue = (v) => {
         if (!this.isActive) {
             this.isActive = true;

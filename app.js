@@ -4,7 +4,7 @@ document.addEventListener("readystatechange", function () {
     }
 });
 
-let _gameBoard = new Gameboard();
+const _gameBoard = new Gameboard();
 
 class Program {
 
@@ -15,5 +15,4 @@ class Program {
     static Main() {
         Program.gameBoard.initialize();
     }
-    
 }
