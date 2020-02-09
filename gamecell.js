@@ -34,8 +34,8 @@ class GameCell {
         newCell.style.height = `${this.height}px`;
         newCell.style.border = "1px solid white";
         newCell.style.position = "absolute";
-        newCell.style.left = `${(this.width * x)}px`;
-        newCell.style.top = `${(this.height * y)}px`;
+        newCell.style.left = `${(this.absoluteX)}px`;
+        newCell.style.top = `${(this.absoluteY)}px`;
         newCell.style.textAlign = "center";
         newCell.addEventListener("click", this.onElementClicked);
         this.Element = newCell;

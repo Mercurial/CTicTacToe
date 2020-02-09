@@ -1,7 +1,6 @@
 class Gameboard {
     size = 3;
-    cellWidth = 266.67;
-    cellHeight = 266.67;
+    boardSize = 500;
     gameContainer = null;
     // 0 = Player One, 1 = Player Two
     currentPlayer = 0;
@@ -14,10 +13,14 @@ class Gameboard {
 
     initialize() {
         this.gameContainer = document.querySelector("#game-container");
-
+        this.gameContainer.style.width = `${this.boardSize}px`;
+        this.gameContainer.style.height = `${this.boardSize}px`;
+        this.gameContainer.style.marginLeft = `calc(50% - ${this.boardSize / 2}px)`;
+        this.gameContainer.style.marginTop = `calc(50vh - ${this.boardSize / 2}px)`;
+        let cellSize = this.boardSize / this.size;
         for (let y = 0; y < this.size; y++) {
             for (let x = 0; x < this.size; x++) {
-                let newCell = new GameCell(this.cellWidth, this.cellHeight, x, y);
+                let newCell = new GameCell(cellSize, cellSize, x, y);
                 this.appendCell(newCell);
 
                 if (!this.cells[x])
@@ -30,7 +33,6 @@ class Gameboard {
         }
         //Temporary
         this.isStarted = true;
-        console.log(this.cells);
     }
 
     appendCell(cell) {
