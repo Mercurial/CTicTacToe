@@ -6,6 +6,8 @@ class GameCell {
     absoluteX = 0;
     absoluteY = 0;
     Element = null;
+    TextContainer = null;
+    isActive = false;
 
     constructor(w, h, x, y) {
         this.width = w;
@@ -15,7 +17,17 @@ class GameCell {
         this.absoluteX = w * x;
         this.absoluteY = h * y;
         let newCell = document.createElement("div");
+        let textContainer = document.createElement("span");
+
+        textContainer.style.fontSize = "187px";
+        textContainer.style.color = "white";
+        textContainer.style.verticalAlign = "middle";
+        textContainer.style.display = "inline-block";
+        textContainer.style.marginTop = "calc(50% - 224px / 2)";
+
+        this.TextContainer = textContainer;
         newCell.classList.add("cell");
+        newCell.appendChild(textContainer);
 
         // Set CSS Properties
         newCell.style.width = `${this.width}px`;
@@ -24,11 +36,23 @@ class GameCell {
         newCell.style.position = "absolute";
         newCell.style.left = `${(this.width * x)}px`;
         newCell.style.top = `${(this.height * y)}px`;
+        newCell.style.textAlign = "center";
         newCell.addEventListener("click", this.onElementClicked);
         this.Element = newCell;
     }
 
     onElementClicked = () => {
-        console.log(this);
+        if (this.onActivate != null) {
+            this.onActivate(this);
+        }
     }
+
+    setValue = (v) => {
+        if (!this.isActive) {
+            this.isActive = true;
+            this.TextContainer.innerText = v;
+        }
+    };
+
+    onActivate = null;
 }
